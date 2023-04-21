@@ -1,5 +1,6 @@
 import React from 'react';
 import { useQuery } from 'react-query';
+import { ButtonError } from '../../Components/Buttons';
 import { Loading } from '../../Components/Loading';
 import { Modal } from '../../Components/Modal';
 import { ModalBody } from '../../Components/Modal/ModalBody';
@@ -7,7 +8,6 @@ import { ModalContent } from '../../Components/Modal/ModalContent';
 import { ModalFooter } from '../../Components/Modal/ModalFooter';
 import { ModalHeader } from '../../Components/Modal/ModalHeader';
 import { axiosInstance } from '../ReactQueryProvider';
-import { Button } from './styles';
 
 export const HealthCheckProvider = ({
   children,
@@ -28,9 +28,9 @@ export const HealthCheckProvider = ({
     return <Loading />;
   }
 
-  return (
-    <React.Fragment>
-      <Modal isOpen={isError}>
+  if (isError) {
+    return (
+      <Modal isOpen>
         <ModalContent>
           <ModalHeader>
             <h1>Error!</h1>
@@ -39,17 +39,18 @@ export const HealthCheckProvider = ({
             <p>The server is not available right now. Try again later.</p>
           </ModalBody>
           <ModalFooter>
-            <Button
+            <ButtonError
               onClick={(): void => {
                 refetch();
               }}
             >
               Retry
-            </Button>
+            </ButtonError>
           </ModalFooter>
         </ModalContent>
       </Modal>
-      {children}
-    </React.Fragment>
-  );
+    );
+  }
+
+  return children;
 };

@@ -1,16 +1,11 @@
 import React from 'react';
-import { AiOutlineLoading3Quarters } from 'react-icons/ai';
-import { Background, Rotate } from './styles';
+import { Spinning } from './Spinning';
+import { Background } from './styles';
 
 export const Loading = (): React.ReactElement => {
   return (
     <Background>
-      <Rotate>
-        <AiOutlineLoading3Quarters
-          size={70}
-          color="#ffffff"
-        />
-      </Rotate>
+      <Spinning />
     </Background>
   );
 };
