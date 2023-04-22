@@ -2,6 +2,7 @@ import React from 'react';
 import { useMutation } from 'react-query';
 import { axiosInstance } from '../../Providers/ReactQueryProvider';
 import { Button, ButtonGray, ButtonSecondary } from '../Buttons';
+import { Input } from '../Input';
 import { Spinning } from '../Loading/Spinning';
 import { Modal } from '../Modal';
 import { ModalBody } from '../Modal/ModalBody';
@@ -59,7 +60,7 @@ export const Share = (): React.ReactElement => {
             <ShareContainer>
               <p>Share this screen with someone!</p>
 
-              <input
+              <Input
                 type="email"
                 placeholder="E-mail"
                 value={email}

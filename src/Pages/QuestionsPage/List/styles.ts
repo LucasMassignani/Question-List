@@ -6,6 +6,12 @@ export const QuestionContainer = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
+  transition: background-color 0.2s;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #d3d3d3;
+  }
 
   img {
     object-fit: cover;

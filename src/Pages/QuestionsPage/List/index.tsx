@@ -1,5 +1,6 @@
 import ColorHash from 'color-hash';
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Button } from '../../../Components/Buttons';
 import { Spinning } from '../../../Components/Loading/Spinning';
 import { Question } from '../../../Interfaces/Question';
@@ -21,11 +22,18 @@ export const List = ({
   isFetchingNextPage: boolean;
   fetchNextPage: () => void;
 }): React.ReactElement => {
+  const navigate = useNavigate();
+
   return (
     <ListContainer>
       {questions.map((question) => {
         return (
-          <QuestionContainer key={question.id}>
+          <QuestionContainer
+            onClick={(): void => {
+              navigate(`/questions/${question.id}`);
+            }}
+            key={question.id}
+          >
             <img src={question.thumb_url} />
             <div>
               <p>{question.question}</p>

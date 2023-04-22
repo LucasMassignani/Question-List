@@ -4,15 +4,19 @@ import {
   createBrowserRouter,
 } from 'react-router-dom';
 import { Root } from './Layout/Root';
-import { Error } from './Pages/Error';
-import { Question } from './Pages/Question';
-import { Questions } from './Pages/Questions';
+import { QuestionPage } from './Pages/QuestionPage';
+import { QuestionsPage } from './Pages/QuestionsPage';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <Root />,
-    errorElement: <Error />,
+    errorElement: (
+      <Navigate
+        to="/questions"
+        replace
+      />
+    ),
     children: [
       {
         path: '/',
@@ -25,11 +29,11 @@ const router = createBrowserRouter([
       },
       {
         path: '/questions',
-        element: <Questions />,
+        element: <QuestionsPage />,
       },
       {
         path: '/questions/:questionId',
-        element: <Question />,
+        element: <QuestionPage />,
       },
     ],
   },

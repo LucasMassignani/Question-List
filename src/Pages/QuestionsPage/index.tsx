@@ -2,17 +2,18 @@ import React from 'react';
 import { useInfiniteQuery } from 'react-query';
 import { useSearchParams } from 'react-router-dom';
 import { Button, ButtonGray } from '../../Components/Buttons';
+import { Input } from '../../Components/Input';
 import { Spinning } from '../../Components/Loading/Spinning';
 import { Share } from '../../Components/Share';
 import { Question } from '../../Interfaces/Question';
 import { axiosInstance } from '../../Providers/ReactQueryProvider';
 import { List } from './List';
-import { Container, Header, ListContainer, SearchContainer } from './styles';
+import { Header, ListContainer, SearchContainer } from './styles';
 
 const firstPage = 0;
 const limit = 10;
 
-export const Questions = (): React.ReactElement => {
+export const QuestionsPage = (): React.ReactElement => {
   const [searchParameters, setSearchParameters] = useSearchParams();
 
   const filterRef = React.useRef<HTMLInputElement | null>(null);
@@ -55,13 +56,13 @@ export const Questions = (): React.ReactElement => {
   });
 
   return (
-    <Container>
+    <div>
       <Header>
         <h1>Question List</h1>
       </Header>
 
       <SearchContainer>
-        <input
+        <Input
           type="text"
           ref={filterRef}
           defaultValue={searchParameters.get('filter') || ''}
@@ -117,6 +118,6 @@ export const Questions = (): React.ReactElement => {
           isFetchingNextPage={isFetchingNextPage}
         />
       )}
-    </Container>
+    </div>
   );
 };
