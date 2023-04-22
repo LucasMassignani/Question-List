@@ -22,14 +22,14 @@ export const Share = (): React.ReactElement => {
   };
 
   const mutation = useMutation(
-    () => {
+    ({ destination, url }: { destination: string; url: string }) => {
       return axiosInstance.post(
         '/share',
         {},
         {
           params: {
-            destination_email: email,
-            content_url: location.href,
+            destination_email: destination,
+            content_url: url,
           },
         },
       );
@@ -82,7 +82,10 @@ export const Share = (): React.ReactElement => {
 
               <Button
                 onClick={(): void => {
-                  mutation.mutate();
+                  mutation.mutate({
+                    destination: email,
+                    url: location.href,
+                  });
                 }}
               >
                 {mutation.isLoading ? (
