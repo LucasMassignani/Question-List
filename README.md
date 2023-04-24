@@ -8,7 +8,7 @@ This application has the objective to list questions from an API, answer the que
 - Install the libraries with the command "npm install".
 
 ## Start
-To start the frontend you can run the command "npm run start"
+To start the frontend you can run the command "npm run start". The application will start at localhost:3000.
 
 ## Tests
 To start the tests you can run the command "npm run test"
